@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Contact } from '../contact';
+import { ContactService } from '../contact.service';
 import { DummycontactService } from '../dummycontact.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class ContactsComponent {
   contacts: Contact[] = [];
   message: String = ''
 
-  constructor (private contactService: DummycontactService) {}
+  constructor (private contactService: ContactService) {}
 
   ngOnInit(): void {
     this.contactService.getContacts().subscribe({
