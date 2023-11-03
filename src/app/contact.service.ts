@@ -22,7 +22,7 @@ export class ContactService {
     // params: new HttpParams().set('name', 'una')
      };
   
-   return this.http.get<Contact[]>(`${this.dataUri}/contacts`, options)
+   return this.http.get<Contact[]>(`${this.dataUri}`, options)
     .pipe(
       retry(3),
       catchError(this.handleError)
