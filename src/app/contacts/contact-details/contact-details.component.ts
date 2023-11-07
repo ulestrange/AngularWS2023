@@ -10,7 +10,8 @@ export class ContactDetailsComponent {
 
 id: String | null= "";
 
-constructor (private route: ActivatedRoute) {}
+constructor (private route: ActivatedRoute) {
+}
 
 ngOnInit(): void{
   this.id = this.route.snapshot.paramMap.get('id')
