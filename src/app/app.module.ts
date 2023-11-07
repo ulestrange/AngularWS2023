@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 //import { ContactsComponent } from './contacts/contacts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { ContactsModule } from './contacts/contacts.module';
 
 
 
@@ -20,7 +21,8 @@ import { MaterialModule } from './material.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    ContactsModule
   ],
   exports: [
   ],
