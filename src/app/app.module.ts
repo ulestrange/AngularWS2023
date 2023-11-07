@@ -24,8 +24,6 @@ import { ContactsModule } from './contacts/contacts.module';
     MaterialModule,
     ContactsModule
   ],
-  exports: [
-  ],
   providers: [],
   bootstrap: [AppComponent]
 })
