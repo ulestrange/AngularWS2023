@@ -1,7 +1,12 @@
 <p>contact-list works!</p>
 
 
-<div class="container responsive-grid">
+<mat-icon>add</mat-icon><span class=cdk-visually-hidden>cdk-visually-hidden</span>
+
+
+<!-- <button mat-button-raised >Add New Contact</button> -->
+
+ <div class="container responsive-grid">
 <div *ngFor='let c of contacts$ | async '>
 <mat-card>
     <mat-card-header>
@@ -15,7 +20,7 @@
     </mat-card-content>
 </mat-card>
   </div>
-</div>
+</div> 
 <!-- <div class="container responsive-grid">
     <div *ngFor=*ngFor='let c of contacts$ | async '>
       <mat-card>

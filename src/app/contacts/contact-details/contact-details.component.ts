@@ -10,27 +10,25 @@ import { ContactService } from '../contact.service';
 })
 export class ContactDetailsComponent {
 
-id: string = "";
+id: string | null= "";
 message: string = ""
-S
+
 contact?: Contact;
 
-constructor (private route: ActivatedRoute) {}
-
-
-// , private contactService :
-//   ContactService ) {
-// }
+constructor (private route: ActivatedRoute, private contactService: ContactService) {}
 
 ngOnInit(): void{
-  this.id = this.route.snapshot.paramMap.get('id') ?? "";
+  this.id = this.route.snapshot.paramMap.get('id');
 
+if (this.id) {
   this.contactService.getContact(this.id).subscribe({
     next: (value: Contact) => this.contact = value,
     complete: () => console.log('contact service finished'),
-    error: (message) => this.message = message })
-
-  }
+    error: (message) => this.message = message
+  })
 }
 
+}
+
+}
 
