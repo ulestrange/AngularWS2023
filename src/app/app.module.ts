@@ -11,10 +11,10 @@ import { ContactsModule } from './contacts/contacts.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-   // ContactsComponent
   ],
   imports: [
     BrowserModule,
