@@ -29,6 +29,22 @@ export class ContactService {
     );
   }
 
+  /// takes an id and sends a get request for that
+  // individual resource.
+
+  getContact(id: string): Observable<Contact> {
+
+    let contactURI = `${this.dataUri}/${id}`
+
+    console.log(contactURI)
+
+   return this.http.get<Contact>(contactURI)
+    .pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
     //taken from: https://angular.io/guide/http
 
     private handleError(error: HttpErrorResponse) {

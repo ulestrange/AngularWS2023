@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Contact } from '../contact';
+import { ContactService } from '../contact.service';
 
 @Component({
   selector: 'app-contact-details',
@@ -8,13 +10,27 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ContactDetailsComponent {
 
-id: String | null= "";
+id: string = "";
+message: string = ""
+S
+contact?: Contact;
 
-constructor (private route: ActivatedRoute) {
-}
+constructor (private route: ActivatedRoute) {}
+
+
+// , private contactService :
+//   ContactService ) {
+// }
 
 ngOnInit(): void{
-  this.id = this.route.snapshot.paramMap.get('id')
+  this.id = this.route.snapshot.paramMap.get('id') ?? "";
+
+  this.contactService.getContact(this.id).subscribe({
+    next: (value: Contact) => this.contact = value,
+    complete: () => console.log('contact service finished'),
+    error: (message) => this.message = message })
+
+  }
 }
 
-}
+

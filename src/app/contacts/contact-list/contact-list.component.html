@@ -10,7 +10,8 @@
     <mat-card-content>
       <div>Number: {{c.phoneNumber}}</div>
       <div>email: {{c.email}}</div>
-     <button mat-button >View Details</button>
+     <a mat-raised-button color="primary"
+        [routerLink] = "['/contacts',c._id]">VIEW DETAILS</a>
     </mat-card-content>
 </mat-card>
   </div>
