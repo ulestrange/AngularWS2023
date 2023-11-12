@@ -1,0 +1,13 @@
+
+/* app.component.css */
+
+.singleColumnForm {
+    grid-template-rows: none;
+    grid-gap: 20px;
+    flex: 200px;
+
+}
+  
+mat-form-field {
+    width: 100%;
+  } 
