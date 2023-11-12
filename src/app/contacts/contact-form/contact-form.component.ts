@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatLabel, MatFormField } from '@angular/material/form-field';
+
 
 @Component({
   selector: 'app-contact-form',
@@ -12,14 +12,20 @@ export class ContactFormComponent {
   contactForm : FormGroup = new FormGroup({
     name: new FormControl ('', [Validators.required, Validators.minLength(3)]),
     phoneNumber: new FormControl ('', [Validators.required]),
-    email: new FormControl('', [Validators.required])
+    email: new FormControl('', [Validators.required, Validators.email])
+
     })
 
 
+
     onSubmit(){
-      console.log('forms submitted with ');
-      console.table(this.contactForm.value);
-      
+      console.log('form submitted with ');
+      console.table(this.contactForm.value);    
+    }
+
+
+    get name() {
+      return this.contactForm.get('name');
     }
   }
 
