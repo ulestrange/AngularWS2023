@@ -45,6 +45,33 @@ export class ContactService {
     );
   }
 
+
+  /** adapted from https://angular.io/guide/http-send-data-to-server */
+addContact(contact: Contact): Observable<Contact> {
+  return this.http.post<Contact>(this.dataUri, contact)
+    .pipe(
+      catchError(this.handleError)
+    );
+}
+
+deleteContact(id: string): Observable<unknown> {
+  const url = `${this.dataUri}/${id}`; // DELETE 
+  return this.http.delete(url)
+    .pipe(
+      catchError(this.handleError)
+    );
+}
+
+updateBook(id: string, contact: Contact): Observable<Contact> {
+  console.log('subscribing to update/' + id);
+  let contactURI: string = this.dataUri + '/' + id;
+  return this.http.put<Contact>(contactURI, contact)
+    .pipe(
+      catchError(this.handleError)
+    )
+}
+
+
     //taken from: https://angular.io/guide/http
 
     private handleError(error: HttpErrorResponse) {
