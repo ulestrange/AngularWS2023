@@ -12,6 +12,7 @@ export class ContactDetailsComponent {
 
 id: string | null= "";
 message: string = ""
+showForm: boolean = false;
 
 contact?: Contact;
 
@@ -39,8 +40,12 @@ deleteContact() {
           this.router.navigateByUrl( '/contacts');
         },
         error: (err) => this.message = err
-      });
-  
+      }); 
 }
+
+editContact() {
+  this.showForm = true;
+}
+
 }
 

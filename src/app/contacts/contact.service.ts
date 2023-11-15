@@ -72,7 +72,7 @@ deleteContact(id: string): Observable<unknown> {
 // takes a contact id and a contact object and calls
 // PUT /contacts/:id with the contact object is the body.
 
-updateBook(id: string, contact: Contact): Observable<Contact> {
+updateContact(id: string, contact: Contact): Observable<Contact> {
   console.log('subscribing to update/' + id);
   let contactURI: string = this.dataUri + '/' + id;
   return this.http.put<Contact>(contactURI, contact)

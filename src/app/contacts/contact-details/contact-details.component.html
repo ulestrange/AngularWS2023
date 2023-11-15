@@ -1,7 +1,7 @@
 
 {{message}}
 
-<mat-card *ngIf="contact">
+<mat-card *ngIf="contact && !showForm" >
     <mat-card-header>
         {{contact.name}}
     </mat-card-header>
@@ -10,8 +10,13 @@
       <div>email: {{contact.email}}</div>
      <button mat-raised-button color="warn" (click)="deleteContact()"
        >DELETE</button>
-    </mat-card-content>
+
+    <button mat-raised-button color="primary" (click)="editContact()"
+    >Edit</button>
+ </mat-card-content>
 </mat-card>
+
+<div *ngIf="showForm"><app-contact-form [contact]="contact"></app-contact-form></div>
 
 
 

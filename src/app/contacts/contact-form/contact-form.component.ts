@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Contact } from '../contact';
@@ -10,23 +10,44 @@ import { ContactService } from '../contact.service';
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.css']
 })
+
+
+
+
 export class ContactFormComponent {
 
+  @Input() contact? : Contact ;
+
+
+
   message: String = "";
+  contactForm: FormGroup = new FormGroup({});
+ 
 
-  contactForm : FormGroup = new FormGroup({
-    name: new FormControl ('', [Validators.required, Validators.minLength(3)]),
-    phoneNumber: new FormControl ('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email])
-
-    })
+  
 
     constructor(private contactService: ContactService, private router: Router) { }
 
+ngOnInit(): void {
+  this.contactForm  = new FormGroup({
+    name: new FormControl (this.contact?.name, [Validators.required, Validators.minLength(3)]),
+    phoneNumber: new FormControl (this.contact?.phoneNumber, [Validators.required]),
+    email: new FormControl(this.contact?.email, [Validators.required, Validators.email])
+
+    })
+
+}
+
     onSubmit(){
       console.log('form submitted with ');
-      console.table(this.contactForm.value);    
+      console.table(this.contactForm.value); 
+      
+      if (!this.contact){
       this.addNewContact(this.contactForm.value)
+      }
+      else {
+        this.updateContact(this.contact._id, this.contactForm.value)
+      }
     }
     
 
@@ -39,6 +60,17 @@ export class ContactFormComponent {
           },
           error: (err) => this.message = err
         });  
+    }
+
+    updateContact(id: string, updatedValues: Contact)
+    {
+      this.contactService.updateContact(id, {...updatedValues})
+      .subscribe({
+        next: contact => {   
+          this.router.navigateByUrl('/contacts')
+        },
+        error: (err) => this.message = err
+      }); 
     }
 
   }
