@@ -13,6 +13,8 @@ export class ContactService {
 
   constructor(private http: HttpClient) { }
 
+  /// calls GET /contacts
+
   getContacts(): Observable<Contact[]> {
 
     console.log("get contacts called" );
@@ -30,7 +32,7 @@ export class ContactService {
   }
 
   /// takes an id and sends a get request for that
-  // individual resource.
+  // individual resource. GET /contacts/:id
 
   getContact(id: string): Observable<Contact> {
 
@@ -46,6 +48,9 @@ export class ContactService {
   }
 
 
+  // takes a contact object and calls
+  // POST /contacts with the contact details in the body
+
   /** adapted from https://angular.io/guide/http-send-data-to-server */
 addContact(contact: Contact): Observable<Contact> {
   return this.http.post<Contact>(this.dataUri, contact)
@@ -54,6 +59,8 @@ addContact(contact: Contact): Observable<Contact> {
     );
 }
 
+// takes a contact id and calls DELETE /contacts/:id
+
 deleteContact(id: string): Observable<unknown> {
   const url = `${this.dataUri}/${id}`; // DELETE 
   return this.http.delete(url)
@@ -61,6 +68,9 @@ deleteContact(id: string): Observable<unknown> {
       catchError(this.handleError)
     );
 }
+
+// takes a contact id and a contact object and calls
+// PUT /contacts/:id with the contact object is the body.
 
 updateBook(id: string, contact: Contact): Observable<Contact> {
   console.log('subscribing to update/' + id);
