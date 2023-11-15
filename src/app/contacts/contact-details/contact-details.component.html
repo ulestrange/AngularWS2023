@@ -1,13 +1,17 @@
-<p>contact-details works!</p>
+
+{{message}}
+
+<mat-card *ngIf="contact">
+    <mat-card-header>
+        {{contact.name}}
+    </mat-card-header>
+    <mat-card-content>
+      <div>Number: {{contact.phoneNumber}}</div>
+      <div>email: {{contact.email}}</div>
+     <button mat-raised-button color="warn" (click)="deleteContact()"
+       >DELETE</button>
+    </mat-card-content>
+</mat-card>
 
 
-
-{{id}}
-
-
-
-<div *ngIf="contact">
-    {{contact.name}}
-    {{contact.email}}
-</div>
 

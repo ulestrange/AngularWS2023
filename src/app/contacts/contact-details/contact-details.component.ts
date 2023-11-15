@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../contact';
 import { ContactService } from '../contact.service';
 
@@ -15,7 +15,7 @@ message: string = ""
 
 contact?: Contact;
 
-constructor (private route: ActivatedRoute, private contactService: ContactService) {}
+constructor (private router : Router, private route: ActivatedRoute, private contactService: ContactService) {}
 
 ngOnInit(): void{
   this.id = this.route.snapshot.paramMap.get('id');
@@ -30,5 +30,17 @@ if (this.id) {
 
 }
 
+deleteContact() {
+    this.contactService.deleteContact(this.contact?._id)
+      .subscribe({
+        next: contact => {
+          console.log(JSON.stringify(contact) + ' has been deleted');
+          this.message = "contact has been deleted";
+          this.router.navigateByUrl( '/contacts');
+        },
+        error: (err) => this.message = err
+      });
+  
+}
 }
 

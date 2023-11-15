@@ -1,4 +1,5 @@
 
+{{message}}
 
 
   <mat-card>
@@ -13,7 +14,9 @@
           <mat-label>Contact Name</mat-label>
           <input matInput placeholder="John Doe" formControlName="name">
           <mat-icon matSuffix>face</mat-icon> 
-          <mat-error *ngIf="contactForm.get('name')?.hasError('minlength')">Name must be at least 3 characters long</mat-error>
+         <mat-error *ngIf="contactForm.hasError('minlength', 'name')">
+         Name must be at least 3 characters long</mat-error>
+            
           <mat-error *ngIf="!contactForm.value.name">Name is required</mat-error>
           <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
           <!-- <mat-hint>This is a hint what does it do?</mat-hint> -->
@@ -35,7 +38,7 @@
           <mat-icon matSuffix>email</mat-icon> 
           <!-- <mat-hint>Hint</mat-hint> -->
           <mat-error *ngIf="!contactForm.value.email">email is required</mat-error>
-          <mat-error *ngIf="contactForm.get('email')?.hasError('email')" >Must be an e-mail</mat-error>
+          <mat-error *ngIf="contactForm.hasError('email', 'email')" >Must be an e-mail</mat-error>
         </mat-form-field>
 
 
