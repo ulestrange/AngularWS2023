@@ -1,0 +1,30 @@
+<p>contact-list works!</p>
+
+
+<div class="container responsive-grid">
+<div *ngFor='let c of contacts$ | async '>
+<mat-card>
+    <mat-card-header>
+        {{c.name}}
+    </mat-card-header>
+    <mat-card-content>
+      <div>Number: {{c.phoneNumber}}</div>
+      <div>email: {{c.email}}</div>
+     <button mat-button >View Details</button>
+    </mat-card-content>
+</mat-card>
+  </div>
+</div>
+<!-- <div class="container responsive-grid">
+    <div *ngFor=*ngFor='let c of contacts$ | async '>
+      <mat-card>
+      <mat-card-header>
+        <mat-card-title>Contact Details</mat-card-title></mat-card-header> 
+        <mat-card-content>
+        Name: {{c.name}}
+      <div>Number: {{c.phoneNumber}}</div>
+      <div>email: {{c.email}}</div>
+    </mat-card-content>
+    </mat-card>
+    </div>
+  </div> -->
