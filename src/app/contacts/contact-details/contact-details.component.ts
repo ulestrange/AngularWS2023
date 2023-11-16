@@ -32,6 +32,8 @@ if (this.id) {
 }
 
 deleteContact() {
+  var result=confirm("Are you sure you want to delete");
+  if (result){
     this.contactService.deleteContact(this.contact?._id)
       .subscribe({
         next: contact => {
@@ -41,6 +43,7 @@ deleteContact() {
         },
         error: (err) => this.message = err
       }); 
+    }
 }
 
 editContact() {
