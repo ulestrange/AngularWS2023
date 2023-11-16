@@ -1,3 +1,22 @@
-<p>contact-details works!</p>
 
-{{id}}
+{{message}}
+
+<mat-card *ngIf="contact && !showForm" >
+    <mat-card-header>
+        {{contact.name}}
+    </mat-card-header>
+    <mat-card-content>
+      <div>Number: {{contact.phoneNumber}}</div>
+      <div>email: {{contact.email}}</div>
+     <button mat-raised-button color="warn" (click)="deleteContact()"
+       >DELETE</button>
+
+    <button mat-raised-button color="primary" (click)="editContact()"
+    >Edit</button>
+ </mat-card-content>
+</mat-card>
+
+<div *ngIf="showForm"><app-contact-form [contact]="contact"></app-contact-form></div>
+
+
+
