@@ -4,6 +4,7 @@ import { Contact } from '../contact';
 import { ContactService } from '../contact.service';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contact-details',
@@ -19,7 +20,8 @@ showForm: boolean = false;
 contact?: Contact;
 
 constructor (public dialog: MatDialog, private router : Router, 
-  private route: ActivatedRoute, private contactService: ContactService) {}
+  private route: ActivatedRoute, private contactService: ContactService,
+  private snackBar: MatSnackBar) {}
 
 ngOnInit(): void{
   this.id = this.route.snapshot.paramMap.get('id');
@@ -28,7 +30,9 @@ if (this.id) {
   this.contactService.getContact(this.id).subscribe({
     next: (value: Contact) => this.contact = value,
     complete: () => console.log('contact service finished'),
-    error: (message) => this.message = message
+    error: (message) => {
+      this.openErrorSnackBar (message);
+    }
   })
 }
 
@@ -72,6 +76,13 @@ deleteItem() {
   }); 
 }
 
+
+openErrorSnackBar(message: string): void {
+  this.snackBar.open(message, 'Dismiss', {
+    duration: 15000, // Set the duration for how long the snackbar should be visible (in milliseconds)
+    panelClass: ['error-snackbar'], // You can define custom styles for the snackbar
+  });
+}
 
 }
 
