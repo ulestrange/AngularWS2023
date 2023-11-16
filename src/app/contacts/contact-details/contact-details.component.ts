@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../contact';
 import { ContactService } from '../contact.service';
+import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-contact-details',
@@ -16,7 +18,8 @@ showForm: boolean = false;
 
 contact?: Contact;
 
-constructor (private router : Router, private route: ActivatedRoute, private contactService: ContactService) {}
+constructor (public dialog: MatDialog, private router : Router, 
+  private route: ActivatedRoute, private contactService: ContactService) {}
 
 ngOnInit(): void{
   this.id = this.route.snapshot.paramMap.get('id');
@@ -32,23 +35,43 @@ if (this.id) {
 }
 
 deleteContact() {
-  var result=confirm("Are you sure you want to delete");
-  if (result){
-    this.contactService.deleteContact(this.contact?._id)
-      .subscribe({
-        next: contact => {
-          console.log(JSON.stringify(contact) + ' has been deleted');
-          this.message = "contact has been deleted";
-          this.router.navigateByUrl( '/contacts');
-        },
-        error: (err) => this.message = err
-      }); 
-    }
+ this.openConfirmDeleteDialog();
 }
 
 editContact() {
   this.showForm = true;
 }
+
+
+openConfirmDeleteDialog(): void {
+  const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    width: '450px',
+    data: { title: "Delete Contact "+ this.contact?.name, 
+     message: "Are you sure you want to delete a contact"}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      // User clicked "Yes", perform the delete operation
+      this.deleteItem();
+    } 
+  });
+
+}
+
+
+deleteItem() {
+  this.contactService.deleteContact(this.contact?._id)
+  .subscribe({
+    next: contact => {
+      console.log(JSON.stringify(contact) + ' has been deleted');
+      this.message = "contact has been deleted";
+      this.router.navigateByUrl( '/contacts');
+    },
+    error: (err) => this.message = err
+  }); 
+}
+
 
 }
 

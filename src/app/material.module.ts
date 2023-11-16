@@ -6,8 +6,8 @@ import { MatButtonModule } from '@angular/material/button'
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input'
-import {MatSnackBar} from '@angular/material/snack-bar'
-import {MatDialog, MatDialogModule} from '@angular/material/dialog'
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+import { MatDialogModule} from '@angular/material/dialog'
 
 
 

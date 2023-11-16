@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { ContactsModule } from './contacts/contacts.module';
+import { SharedModule } from './shared/shared.module'
 
 
 
@@ -22,7 +23,8 @@ import { ContactsModule } from './contacts/contacts.module';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ContactsModule
+    ContactsModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
