@@ -10,7 +10,8 @@ import { MaterialModule } from './material.module';
 import { ContactsModule } from './contacts/contacts.module';
 import { SharedModule } from './shared/shared.module'
 
-
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment  } from '../environments/environment';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SharedModule } from './shared/shared.module'
     BrowserAnimationsModule,
     MaterialModule,
     ContactsModule,
-    SharedModule
+    SharedModule,
+    AuthModule.forRoot({...environment.auth0,})
   ],
   providers: [],
   bootstrap: [AppComponent]
