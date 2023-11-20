@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module'
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment  } from '../environments/environment';
 
+import { AuthHttpInterceptor } from '@auth0/auth0-angular';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,12 @@ import { environment  } from '../environments/environment';
     MaterialModule,
     ContactsModule,
     SharedModule,
-    AuthModule.forRoot({...environment.auth0,})
+    AuthModule.forRoot({...environment.auth0,
+    httpInterceptor: {
+      allowedList: [`${environment.api.serverUrl}`]}
+    })
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
