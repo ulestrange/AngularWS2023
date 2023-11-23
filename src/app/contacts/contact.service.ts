@@ -20,7 +20,7 @@ export class ContactService {
     console.log("get contacts called" );
 
    const options =  {
-     headers: new HttpHeaders().set('X-API-key', 'abcde12345'),
+    // headers: new HttpHeaders().set('X-API-key', 'abcde12345'),
     // params: new HttpParams().set('name', 'una')
      };
   

@@ -1,6 +1,5 @@
 
 
-<div *ngIf="contact">{{contact.name}}</div>
 
   <mat-card>
     <mat-card-header>
@@ -49,6 +48,8 @@
 
 <button mat-raised-button type="submit" color="primary"
 [disabled] = "contactForm.invalid" >Submit Values</button>
+
+<a mat-raised-button href="/contacts" > Cancel</a>
 
     </form>
 </mat-card-content>
