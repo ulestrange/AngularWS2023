@@ -29,7 +29,7 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
     SharedModule,
     AuthModule.forRoot({...environment.auth0,
     httpInterceptor: {
-      allowedList: [`${environment.api.serverUrl}`]}
+      allowedList: [`${environment.apiUri}/contacts`]}
     })
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },],
