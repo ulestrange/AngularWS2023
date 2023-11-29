@@ -10,10 +10,15 @@ import { AuthService } from '@auth0/auth0-angular';
 export class AppComponent {
   title = 'AngularWS2023 - Una';
 
-  isAuthenticated$ = this.auth.isAuthenticated$
 
-  constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService)
-  {}
 
+ constructor(@Inject(DOCUMENT) public document: Document, public auth: AuthService)
+ {}
+
+
+  ngOnInit()
+  {
+   this.auth.user$.subscribe( res => console.log(res))
+  }
 
 }
