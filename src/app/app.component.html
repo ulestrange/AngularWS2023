@@ -5,26 +5,26 @@
 
 
 
-<!-- <app-contacts></app-contacts> -->
+
 
 <router-outlet></router-outlet>
 
-<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+ <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
     <button (click)="auth.logout({
          logoutParams: {returnTo: document.location.origin }})">
         Log out
     </button>
 </ng-container>
 
-<ng-template #loggedOut>
+ <ng-template #loggedOut>
     <button (click)="auth.loginWithRedirect()">Log in</button>
-  </ng-template>
+  </ng-template> 
 
 
 
-  <ul *ngIf="auth.user$ | async as user">
+<ul *ngIf="auth.user$ | async as user">
     <li>{{ user.name }}</li>
     <li>{{ user.email }}</li>
     <li><img src="{{ user.picture }}" ></li>
-    <!--  -->
-  </ul>
+
+ </ul> 

@@ -29,7 +29,35 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
     SharedModule,
     AuthModule.forRoot({...environment.auth0,
     httpInterceptor: {
-      allowedList: [`${environment.apiUri}/contacts/*`]}
+      allowedList: [
+        {
+          uri:  `${environment.apiUri}/contacts/*`,
+          httpMethod: 'PUT',
+          // tokenOptions: {
+          //   // authorizationParams: {
+          //   //   audience: 'http://my-api/',
+          // //   // }
+          // },
+        },
+        {
+          uri:  `${environment.apiUri}/contacts`,
+          httpMethod: 'POST',
+          // tokenOptions: {
+          //   // authorizationParams: {
+          //   //   audience: 'http://my-api/',
+          // //   // }
+          // },
+        },
+        {
+          uri:  `${environment.apiUri}/contacts/*`,
+          httpMethod: 'DELETE',
+          // tokenOptions: {
+          //   // authorizationParams: {
+          //   //   audience: 'http://my-api/',
+          // //   // }
+          // },
+        },
+       ]}
     })
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },],

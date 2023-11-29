@@ -18,7 +18,7 @@ export class AppComponent {
 
   ngOnInit()
   {
-   this.auth.user$.subscribe( res => console.log(res))
+   //this.auth.user$.subscribe( res => console.log(res))
   }
 
 }

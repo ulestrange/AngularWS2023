@@ -5,6 +5,7 @@ import { ContactService } from '../contact.service';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { EMPTY, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-contact-details',
@@ -16,6 +17,7 @@ export class ContactDetailsComponent {
 id: string | null= "";
 message: string = ""
 showForm: boolean = false;
+contact$ : Observable<Contact> = EMPTY;
 
 contact?: Contact;
 
@@ -27,6 +29,10 @@ ngOnInit(): void{
   this.id = this.route.snapshot.paramMap.get('id');
 
 if (this.id) {
+
+  this.contact$ = this.contactService.getContact(this.id);
+
+
   this.contactService.getContact(this.id).subscribe({
     next: (value: Contact) => this.contact = value,
     complete: () => console.log('contact service finished'),
