@@ -28,34 +28,25 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
     ContactsModule,
     SharedModule,
     AuthModule.forRoot({...environment.auth0,
+
+      //this will add an access to the three rotues
+      // which change the database 
+      // these routes need to be protected on the server side too
+      // we are choosing to leave our get routes unprotected
+      // so they need to be unprotected on the server side too
     httpInterceptor: {
       allowedList: [
         {
           uri:  `${environment.apiUri}/contacts/*`,
           httpMethod: 'PUT',
-          // tokenOptions: {
-          //   // authorizationParams: {
-          //   //   audience: 'http://my-api/',
-          // //   // }
-          // },
         },
         {
           uri:  `${environment.apiUri}/contacts`,
           httpMethod: 'POST',
-          // tokenOptions: {
-          //   // authorizationParams: {
-          //   //   audience: 'http://my-api/',
-          // //   // }
-          // },
         },
         {
           uri:  `${environment.apiUri}/contacts/*`,
           httpMethod: 'DELETE',
-          // tokenOptions: {
-          //   // authorizationParams: {
-          //   //   audience: 'http://my-api/',
-          // //   // }
-          // },
         },
        ]}
     })
