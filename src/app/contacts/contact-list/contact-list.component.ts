@@ -17,4 +17,9 @@ export class ContactListComponent {
     this.contacts$ = this.contactService.getContacts();
   }
 
+  ngOnInit()
+  {
+    console.log(window.location.origin);
+  }
+
 }
