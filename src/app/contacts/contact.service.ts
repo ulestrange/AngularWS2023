@@ -36,10 +36,10 @@ export class ContactService {
 
   getContact(id: string): Observable<Contact> {
 
+    console.log('in get contacts')
+
     let contactURI = `${this.dataUri}/${id}`
-
-    console.log(contactURI)
-
+    
    return this.http.get<Contact>(contactURI)
     .pipe(
       retry(3),

@@ -16,6 +16,8 @@ import { ContactService } from '../contact.service';
 
 export class ContactFormComponent {
 
+
+
   @Input() contact? : Contact ;
 
 
@@ -35,6 +37,7 @@ ngOnInit(): void {
     email: new FormControl(this.contact?.email, [Validators.required, Validators.email])
 
     })
+
 
 }
 
