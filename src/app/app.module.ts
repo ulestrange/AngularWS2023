@@ -14,10 +14,14 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { environment  } from '../environments/environment';
 
 import { AuthHttpInterceptor } from '@auth0/auth0-angular';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
