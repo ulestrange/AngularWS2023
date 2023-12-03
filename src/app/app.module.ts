@@ -33,29 +33,14 @@ import { AuthHttpInterceptor } from '@auth0/auth0-angular';
         {
           uri:  `${environment.apiUri}/contacts/*`,
           httpMethod: 'PUT',
-          // tokenOptions: {
-          //   // authorizationParams: {
-          //   //   audience: 'http://my-api/',
-          // //   // }
-          // },
         },
         {
           uri:  `${environment.apiUri}/contacts`,
           httpMethod: 'POST',
-          // tokenOptions: {
-          //   // authorizationParams: {
-          //   //   audience: 'http://my-api/',
-          // //   // }
-          // },
         },
         {
           uri:  `${environment.apiUri}/contacts/*`,
           httpMethod: 'DELETE',
-          // tokenOptions: {
-          //   // authorizationParams: {
-          //   //   audience: 'http://my-api/',
-          // //   // }
-          // },
         },
        ]}
     })

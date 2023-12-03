@@ -9,7 +9,6 @@
 
 <router-outlet></router-outlet>
 
-<!-- <div *ngIf="route.url | async as ro" > {{ro}}</div> -->
 
  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
     <button (click)="handleLogOut()">

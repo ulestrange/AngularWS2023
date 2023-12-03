@@ -5,7 +5,10 @@
 <div *ngIf="contact">{{contact.name}}</div>
 
   <mat-card>
+
+
     <mat-card-header>
+
       <h1 *ngIf="!contact">Add a contact</h1>
       <h1 *ngIf="contact">Edit a contact</h1>
     
