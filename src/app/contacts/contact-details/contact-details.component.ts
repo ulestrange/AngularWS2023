@@ -27,6 +27,9 @@ constructor (public dialog: MatDialog, private router : Router,
 
 ngOnInit(): void{
   this.id = this.route.snapshot.paramMap.get('id');
+  console.log('router.url ' + this.router.url);
+
+  // console.log('path '  + this.route.snapshot.pathFromRoot.)
 
 if (this.id) {
 
