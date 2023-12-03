@@ -18,22 +18,14 @@ export class AppComponent {
   constructor(
     @Inject(DOCUMENT) public document: Document,
     public auth: AuthService,
-    private router: Router,
 
   ) {}
 
 
-
-
-
   handleLogOut() {
-
     this.auth.logout({
-
     });
   }
-
-
 
 
   handleLogIn() {
