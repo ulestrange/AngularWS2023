@@ -1,30 +1,24 @@
-<mat-toolbar color="primary" >2023 Client Application for worksheets
+<mat-toolbar color="primary" ><div>2023 Client Application for WS</div>
+  
+  <span class="toolbar-spacer"></span>
+  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <button mat-raised-button (click)="handleLogOut()">
+        Log out
+    </button>
+
+    <div *ngIf="auth.user$ | async as user">
+    {{ user.name }}
+
+    </div>
+
+</ng-container>
+
+ <ng-template #loggedOut>
+    <button mat-raised-button (click)="handleLogIn()">Log in</button>
+  </ng-template> 
 </mat-toolbar>
-
-
-
-
-
 
 
 <router-outlet></router-outlet>
 
 
- <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-    <button (click)="handleLogOut()">
-        Log out
-    </button>
-</ng-container>
-
- <ng-template #loggedOut>
-    <button (click)="handleLogIn()">Log in</button>
-  </ng-template> 
-
-
-
-<ul *ngIf="auth.user$ | async as user">
-    <li>{{ user.name }}</li>
-    <li>{{ user.email }}</li>
-    <li><img src="{{ user.picture }}" ></li>
-
- </ul> 
